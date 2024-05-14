@@ -61,6 +61,15 @@ function renderTasks() {
             taskText.classList.add("completed");
         }
 
+        // Création d'un élément pour afficher la date d'échéance
+        const deadlineText = document.createElement("span");
+        deadlineText.classList.add("deadline-text");
+        deadlineText.textContent = task.deadline;
+        // Ajout de la classe "completed" si la tâche est complétée
+        if (task.completed) {
+            deadlineText.classList.add("completed");
+        }
+
         // Création d'un élément de div pour les boutons de la tâche
         const buttonsDiv = document.createElement("div");
 
@@ -69,7 +78,8 @@ function renderTasks() {
         completeBtn.classList.add("btn", "btn-outline-secondary", "complete-btn");
         completeBtn.textContent = task.completed ? "Terminé" : "Terminer";
         if (task.completed) {
-            completeBtn.classList.add("btn-primary"); // Ajout d'une classe pour les tâches terminées
+            completeBtn.classList.add("btn-secondary"); // Ajout d'une classe pour les tâches terminées
+            completeBtn.style.color = "white";
         } else {
             completeBtn.classList.add("btn-outline"); // Ajout d'une classe pour les tâches non terminées
         }
@@ -85,14 +95,16 @@ function renderTasks() {
         buttonsDiv.appendChild(completeBtn);
         buttonsDiv.appendChild(deleteBtn);
 
-        // Ajout du texte de la tâche et des boutons à l'élément de liste
+        // Ajout du texte de la tâche et de la date d'échéance ainsi que des boutons à l'élément de liste
         taskItem.appendChild(taskText);
+        taskItem.appendChild(deadlineText); // Ajout de la date d'échéance
         taskItem.appendChild(buttonsDiv);
 
         // Ajout de l'élément de liste à la liste des tâches
         todoList.appendChild(taskItem);
     });
 }
+
 
 // Fonction pour marquer une tâche comme terminée ou non terminée
 function toggleTaskCompletion(taskId) {
