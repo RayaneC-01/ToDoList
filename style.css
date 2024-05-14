@@ -80,3 +80,17 @@ body {
   margin-left: 10px;
   cursor: pointer;
 }
+
+/* Style pour la date d'échéance */
+.deadline-text,
+.task-text {
+  margin-left: 10px; /* Marge à gauche pour l'espace entre le texte de la tâche et la date d'échéance */
+  font-size: 20px;
+  color: #333;
+}
+
+.form-label {
+  margin: 0 10px;
+  background-color: red;
+  padding: 5px;
+}
