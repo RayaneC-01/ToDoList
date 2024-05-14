@@ -2,6 +2,7 @@
 const todoInput = document.getElementById("todoText");
 const todoList = document.getElementById("list-items");
 const addTaskBtn = document.getElementById("addTaskBtn");
+const deadlineInput = document.getElementById("deadline");
 
 // Tableau pour stocker les tâches
 let tasks = [];
@@ -10,27 +11,31 @@ let tasks = [];
 function createTask() {
     // Récupération du texte de la tâche à partir de l'input
     const taskText = todoInput.value.trim();
+    const deadlineValue = deadlineInput.value;
 
-    // Vérification si le texte de la tâche est vide
-    if (taskText === "") {
-        // Affichage d'un message d'erreur si le texte est vide
-        showAlert("Veuillez entrer une tâche.", "error");
+    // Vérification si la tâche et la date d'échéance ne sont pas vides
+    if (taskText === "" || deadlineValue === "") {
+        // Affichage d'un message d'erreur si le texte ou la date d'échéance sont vides
+        showAlert("Veuillez remplir tous les champs.", "error");
         return;
     }
 
-    // Création d'un objet tâche avec un ID unique, le texte et un statut de complétion
+    // Création d'un objet tâche avec un ID unique, le texte, un statut de complétion et une date d'échéance
     const task = {
         id: Date.now(), // ID unique basé sur le timestamp actuel
         text: taskText,
-        completed: false
+        completed: false,
+        deadline: deadlineValue
     };
 
     // Ajout de la tâche au tableau des tâches
     tasks.push(task);
     renderTasks();
 
-    // Réinitialisation de l'input de la tâche
+    // Réinitialisation de l'input de la tâche et la date d'échéance
     todoInput.value = "";
+    deadlineInput.value = "";
+
     // Affichage d'un message de succès pour l'ajout de la tâche
     showAlert("Tâche ajoutée avec succès.", "success");
 }
@@ -118,13 +123,13 @@ function showAlert(message, type) {
         toast: true,
         position: 'top-end',
         showConfirmButton: false
-    })
+    });
 }
 
 // Ajout d'un écouteur d'événement pour l'ajout de tâches lorsque le bouton "Ajouter tâche" est cliqué
 addTaskBtn.addEventListener("click", createTask);
 
-// Sauvegarde des tâches dans le stockage local chaque fois que les tâches sont mis à jour
+// Sauvegarde des tâches dans le stockage local chaque fois que les tâches sont mises à jour
 window.addEventListener("beforeunload", () => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 });
