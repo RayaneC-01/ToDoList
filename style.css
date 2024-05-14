@@ -72,12 +72,16 @@ body {
 .todo-item:hover {
   background-color: #f9f9f9;
 }
+
 .completed {
   text-decoration: line-through;
 }
 
 .todo-item .task-text {
   flex: 1;
+  margin-left: 10px;
+  font-size: 20px;
+  color: #333;
 }
 
 .todo-item .controls img {
@@ -88,14 +92,102 @@ body {
 }
 
 /* Style pour la date d'échéance */
-.deadline-text,
-.task-text {
-  margin-left: 10px; /* Marge à gauche pour l'espace entre le texte de la tâche et la date d'échéance */
-  font-size: 20px;
-  color: #333;
+.deadline-text {
+  font-size: 16px;
+  color: #6c757d;
 }
 
 .form-label {
   margin: 0 10px;
   padding: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style général de la page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.todo-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.todo-header h2 {
+  color: #333;
+}
+
+.todo-body {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.todo-body input[type="text"],
+.todo-body input[type="date"],
+.todo-body button {
+  margin-bottom: 10px;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-item {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.todo-item .task-text {
+  margin-left: 10px;
+  font-size: 20px;
+  color: #333;
+}
+
+.todo-item .deadline-text {
+  margin-left: 10px;
+  font-size: 16px;
+  color: #6c757d;
+}
+
+@media screen and (min-width: 768px) {
+  .todo-body {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .todo-body input[type="text"],
+  .todo-body input[type="date"],
+  .todo-body button {
+    margin-bottom: 0;
+  }
+
+  .todo-list {
+    margin-top: 20px;
+  }
 }
