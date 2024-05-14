@@ -3,6 +3,8 @@ const todoInput = document.getElementById("todoText");
 const todoList = document.getElementById("list-items");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const deadlineInput = document.getElementById("deadline");
+const sortASCBtn = document.getElementById("sortASC");
+const sortDESCBtn = document.getElementById("sortDESC");
 
 // Tableau pour stocker les tâches
 let tasks = [];
@@ -138,8 +140,27 @@ function showAlert(message, type) {
     });
 }
 
+
 // Ajout d'un écouteur d'événement pour l'ajout de tâches lorsque le bouton "Ajouter tâche" est cliqué
 addTaskBtn.addEventListener("click", createTask);
+
+// Ajout d'un écouteur d'événement pour le tri par croissance
+sortASCBtn.addEventListener("click", sortTasksByDeadlineASC);
+
+// Ajout d'un écouteur d'événement pour le tri par décroissance
+sortDESCBtn.addEventListener("click", sortTasksByDeadlineDESC);
+
+// Fonction pour trier les tâches par date d'échéance dans l'ordre croissant
+function sortTasksByDeadlineASC() {
+    tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+    renderTasks();
+}
+
+// Fonction pour trier les tâches par date d'échéance dans l'ordre décroissant
+function sortTasksByDeadlineDESC() {
+    tasks.sort((a, b) => new Date(b.deadline) - new Date(a.deadline));
+    renderTasks();
+}
 
 // Sauvegarde des tâches dans le stockage local chaque fois que les tâches sont mises à jour
 window.addEventListener("beforeunload", () => {
