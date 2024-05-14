@@ -124,6 +124,11 @@ function showAlert(message, type) {
 // Ajout d'un écouteur d'événement pour l'ajout de tâches lorsque le bouton "Ajouter tâche" est cliqué
 addTaskBtn.addEventListener("click", createTask);
 
+// Sauvegarde des tâches dans le stockage local chaque fois que les tâches sont mis à jour
+window.addEventListener("beforeunload", () => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+});
+
 // Récupération de la tâche enregistrée dans le stockage local ou un tableau vide si aucune tâche n'est trouvée
 tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
