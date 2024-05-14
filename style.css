@@ -35,11 +35,17 @@ body {
 }
 
 .todo-body input[type="text"] {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 3px;
-  outline: none;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre portée */
+}
+
+/* Style pour le placeholder de l'input */
+.todo-input::placeholder {
+  color: #6c757d;
 }
 
 .todo-body img {
@@ -91,6 +97,5 @@ body {
 
 .form-label {
   margin: 0 10px;
-  background-color: red;
   padding: 5px;
 }
