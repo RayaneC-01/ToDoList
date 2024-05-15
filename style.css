@@ -67,7 +67,6 @@ body {
   color: #6c757d;
 }
 
-
 @media only screen and (min-width: 576px) {
   /* Pour les écrans de taille supérieure à 576px (sm), afficher les boutons sur une ligne */
   .todo-body {
