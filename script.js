@@ -107,7 +107,6 @@ function renderTasks() {
     });
 }
 
-
 // Fonction pour marquer une tâche comme terminée ou non terminée
 function toggleTaskCompletion(taskId) {
     // Recherche de l'index de la tâche dans le tableau des tâches
