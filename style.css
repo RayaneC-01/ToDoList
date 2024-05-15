@@ -67,10 +67,7 @@ body {
   color: #6c757d;
 }
 
-.btn {
-  margin-right: 10px;
-  margin-bottom: 10px; /* Ajouter de l'espace entre les boutons */
-}
+
 @media only screen and (min-width: 576px) {
   /* Pour les écrans de taille supérieure à 576px (sm), afficher les boutons sur une ligne */
   .todo-body {
